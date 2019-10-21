@@ -46,7 +46,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-  <key>GADIsAdManagerApp</key>
-  <true/>
+	<key>GADIsAdManagerApp</key>
+	<true/>
+	<key>AppLovinSdkKey</key>
+	<string>D7PEISIb9TQTFm95-5DTUC2Wvq21R-yoXGJRyNkGs0zIrdHkNyLTX8kIwEalvtPDX3vE_asUs-iuPTnfbff63D</string>
 </dict>
 </plist>

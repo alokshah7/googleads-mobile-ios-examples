@@ -17,6 +17,7 @@
 #import "ViewController.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
+
 /// Constant for coin rewards.
 static const NSInteger GameOverReward = 1;
 
@@ -101,16 +102,19 @@ typedef NS_ENUM(NSInteger, GameState) {
 }
 
 - (void)requestRewardedVideo {
-  _isLoading = true;
-  self.rewardedAd = [[GADRewardedAd alloc] initWithAdUnitID:@"/6499/example/rewarded-video"];
 
-  DFPRequest *request = [DFPRequest request];
+  _isLoading = true;
+    self.rewardedAd = [[GADRewardedAd alloc] initWithAdUnitID:@"/6075/rewarded-ad-2"];
+
+  GADRequest *request = [GADRequest request];
+  request.testDevices = @[ kGADSimulatorID ];
+    
   [self.rewardedAd loadRequest:request
              completionHandler:^(GADRequestError *_Nullable error) {
                _isLoading = false;
                if (error) {
                  // Handle ad failed to load case.
-                 NSLog(@"Loading Failed");
+                 NSLog(@"Loading Failed = %@", error);
                } else {
                  // Ad successfully loaded.
                  NSLog(@"Loading Succeeded");

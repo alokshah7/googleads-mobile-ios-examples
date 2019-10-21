@@ -20,10 +20,38 @@
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
+#import <AppLovinSDK/AppLovinSDK.h>
+
+#import <InMobiAdapter/InMobiAdapter.h>
+
+#import <UnityAds/UnityAds.h>
+
+
+
 @implementation AppDelegate
+
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [ALSdk initializeSdk];
+
+    ALSdk *sdk = [ALSdk shared];
+    sdk.settings.isTestAdsEnabled = YES;
+    
+    GADInMobiExtras *extras = [[GADInMobiExtras alloc] init];
+    extras.logLevel = kIMSDKLogLevelDebug;
+    
+    
+    NSMutableDictionary *consentdict=[[NSMutableDictionary alloc]init];
+    //consent value needs to be collected from the end user
+    [consentdict setObject:@"true" forKey:IM_GDPR_CONSENT_AVAILABLE];
+    [consentdict setObject:@1 forKey:@"gdpr"];
+    //Initialize InMobi SDK with your account ID
+    [IMSdk initWithAccountID: @"50d769a8682946a2be2e28f6d43bf0ab" consentDictionary:consentdict];
+    
+    [UnityAds initialize : @"3294728" delegate : self testMode : true];
+
+    
   return YES;
 }
 
